@@ -45,7 +45,7 @@ let NERDTreeShowBookmarks=1                         " bookmarks on for NERDTree
 
 colorscheme xoria256
 
-"syntax enabled                                      " hurray for syntax highlightinge
+syntax on                                           " hurray for syntax highlightinge
 
 imap jj <esc>
 "Auto change directory to match current file ,cd
@@ -81,19 +81,19 @@ nmap <leader>lca :e app/config/app.php<cr>81Gf(%O
 nmap <leader>lcd :e app/config/database.php<cr>
 nmap <leader>lc :e composer.json<cr>
 
-if has("gui_running")
-  " GUI is running or is about to start.
-  " Maximize gvim window.
-  set lines=999 columns=999
-else
-  " This is console Vim.
-  if exists("+lines")
-    set lines=41
-  endif
-  if exists("+columns")
-    set columns=184
-  endif
-endif
+"if has("gui_running")
+"  " GUI is running or is about to start.
+"  " Maximize gvim window.
+"  set lines=999 columns=999
+"else
+"  " This is console Vim.
+"  if exists("+lines")
+"    set lines=41
+"  endif
+"  if exists("+columns")
+"    set columns=184
+"  endif
+"endif
 
 let $LANG = 'en'
 

@@ -1,11 +1,12 @@
-let mapleader=","
-
+set nocompatible
+set t_Co=256
 "pathogen for handling plugins
 call pathogen#infect() 
 call pathogen#helptags() 
 
 filetype plugin on
 
+"guioptions
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
@@ -17,48 +18,68 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
+set linespace=5
+set tags=tags
+set copyindent                                      " copy the previous indentation on autoindenting
 
-"keep 3 lines when scrolling
-set scrolloff=3
+set ignorecase                                      " ignore case when searching
+set smartcase                                       " ignore case if search pattern is all lowercase
+set scrolloff=3                                     " keep 3 lines when scrolling
+set guifont=Consolas:h14 "Consolas is a nice font
+set mousehide                                       " hide the mouse while typing
+set printoptions=header:0,duplex:long,paper:letter  " nice printing options
 
-"Consolas is a nice font
-set guifont=Consolas:12
+set cpoptions=ces$                                  " make 'cw''put a $ at the end
+set stl=%f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B] "set the status lines
+set laststatus=2
+set noswapfile                                      " no swap file please
+set number                                          "show line numbers
+set timeout timeoutlen=200 ttimeoutlen=100
+set visualbell                                      " don't beep
+set noerrorbells                                    " don't beep
 
-"For now railscasts will do til i find a better one
-colorscheme railscasts
+let mapleader=","
+let g:mapleader=","
 
-"hurray for syntax highlighting
-syntax enable
+let NERDTreeShowBookmarks=1                         " bookmarks on for NERDTree
+
+colorscheme xoria256
+
+"syntax enabled                                      " hurray for syntax highlightinge
+
+imap jj <esc>
+"Auto change directory to match current file ,cd
+nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
+
+"easier window navigation
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+ 
+"fast saves
+nmap <leader>w :w!<cr>
 
 "mapped e to toggle NERDTree
 nmap <Leader>e :NERDTreeToggle<CR>
+nmap <Leader>n :NERDTreeFind<CR>
 "mapped t to toggle TagBar
 nmap <Leader>t :TagbarToggle<CR>
 
-"bookmarks on for NERDTree
-let NERDTreeShowBookmarks=1
+"copy current file path to clipboard
+nmap <Leader>l :let @+ = expand("%:p")<CR>
 
-lcd C:/users/bstavenuiter
+"paste current clipboard on next line
+nmap <Leader>p "+p
 
-"hide the mouse while typing
-set mousehide
+" open current buffer in opera
+nmap <Leader>o :!open -a Opera.app %<cr> 
 
-"nice printing options
-set printoptions=header:0,duplex:long,paper:letter
-
-"make 'cw''put a $ at the end
-set cpoptions=ces$
-
-"set the status lines
-set stl=%f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
-
-set laststatus=2
-
-"no swap file please
-set noswapfile
-
-"show line numbers
-set number
+" Laravel framework commons
+nmap <leader>lr :e app/routes.php<cr>
+nmap <leader>lca :e app/config/app.php<cr>81Gf(%O
+nmap <leader>lcd :e app/config/database.php<cr>
+nmap <leader>lc :e composer.json<cr>
 
 if has("gui_running")
   " GUI is running or is about to start.
@@ -67,10 +88,10 @@ if has("gui_running")
 else
   " This is console Vim.
   if exists("+lines")
-    set lines=61
+    set lines=41
   endif
   if exists("+columns")
-    set columns=209
+    set columns=184
   endif
 endif
 
@@ -82,8 +103,14 @@ if has("autocmd")
 endif
 
 "wildmenu by tab
-set wildchar=<Tab> wildmenu wildmode=full
+"set wildchar=<Tab> wildmenu wildmode=full
 
 "tabbing switches buffers
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
+
+" CTRLP stuff
+
+"" Familiar commands for file/symbol browsing
+map <D-p> :CtrlP<cr>
+map <C-r> :CtrlPMixed<cr>

@@ -34,6 +34,7 @@ set timeout timeoutlen=200 ttimeoutlen=100
 set visualbell                                      " don't beep
 set noerrorbells                                    " don't beep
 set hlsearch                                        " highlight searches
+set splitright                                      " want vertical splits to the right
 
 syntax on                                           " hurray for syntax highlightinge
 colorscheme xoria256                                " set colorscheme 
@@ -62,11 +63,15 @@ noremap <Leader>q :Bdelete<cr>
 " quickly update
 nmap <Leader>w :w!<cr>
 
+" remove highlighting after search
+nmap <Leader><space> :noh<cr>
 
 " mapped e to toggle NERDTree
 nmap <Leader>e :NERDTreeToggle<CR>
 " quickly go to the Vagrant file
 nmap <leader>ev :e ~/code/VagrantFile<cr>
+" quickly edit .vimrc
+nmap <leader>evim :e ~/.vimrc<cr>
 " see where your file is inside nerdtree
 nmap <Leader>n :NERDTreeFind<CR>
 
@@ -124,7 +129,23 @@ let g:UltiSnipsEditSplit="vertical"
 " let ctrlp just work from CMD
 let ctrlp_working_path_mode = 0
 
+"---------- EMMET ----------
+let g:user_emmet_settings = {
+\        'php' : {
+\        'extends' : 'html',
+\        'filters' : 'html,c'
+\        },
+\        'blade' : {
+\        'extends' : 'html',
+\        'filters' : 'html,c'
+\        },
+\        'html' : {
+\            'filters' : 'c'
+\        }
+\}
 
+" map II to quickly do emmet autocomplete
+imap II <c-y>,
 
 "---------- AUTO SOURCING ----------
 " Source the vimrc file after saving it

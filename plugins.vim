@@ -43,6 +43,12 @@ Plugin 'qpkorr/vim-bufkill'
 " Snippets!
 Plugin 'SirVer/ultisnips'
 
+" vim-blade requires polyglot for syntax highlighting
+Plugin 'sheerun/vim-polyglot'
+
+" Laravels blade syntax highlighting
+Plugin 'jwalton512/vim-blade'
+
 call vundle#end()
 
 "ignore other plugin indent changes

@@ -49,6 +49,27 @@ Plugin 'sheerun/vim-polyglot'
 " Laravels blade syntax highlighting
 Plugin 'jwalton512/vim-blade'
 
+" PHP Optimization
+Plugin 'StanAngeloff/php.vim'
+
+" Adds php namespace completion
+Plugin 'arnaud-lb/vim-php-namespace'
+
+" Adds php-cs-fixer
+Plugin 'stephpy/vim-php-cs-fixer'
+
+" Adds Ack search
+Plugin 'mileszs/ack.vim'
+
+"" Add php complete
+Plugin 'shawncplus/phpcomplete.vim'
+
+" Adds phpunit support
+Plugin 'janko-m/vim-test'
+
+" Add better syntax support
+Plugin 'vim-syntastic/syntastic'
+
 call vundle#end()
 
 "ignore other plugin indent changes

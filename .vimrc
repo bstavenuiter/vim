@@ -106,6 +106,7 @@ augroup autosourcing
 augroup END
 
 "---------- CUSTOM FUNCTIONS ----------
+" Transforms the unixtimestamp under cursor to readable date
 vnoremap <Leader>m :call FromUnixtime()<CR>
 fu! FromUnixtime() 
     normal gv"xy
@@ -114,6 +115,7 @@ fu! FromUnixtime()
     normal "xp
 endfunction
 
+" Add class to use statement
 function! IPhpInsertUse()
     call PhpInsertUse()
     call feedkeys('a',  'n')
@@ -121,7 +123,7 @@ endfunction
 autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
 autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 
-
+" Autocompletes to full classname
 function! IPhpExpandClass()
     call PhpExpandClass()
     call feedkeys('a', 'n')

@@ -1,6 +1,4 @@
 set t_Co=256
-" source out the plugins for vundle so ~/.vim/plugins.vim
-so ~/.vim/plugins.vim
 
 " guioptions
 set guioptions-=m  " remove menu bar
@@ -27,7 +25,7 @@ set mousehide                                       " hide the mouse while typin
 set printoptions=header:0,duplex:long,paper:letter  " nice printing options
 
 set cpoptions=ces$                                  " make 'cw''put a $ at the end
-set stl=%f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B] "set the status lines
+"set stl=%f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B] "set the status lines
 set laststatus=2
 set noswapfile                                      " no swap file please
 set number                                          " show line numbers
@@ -38,7 +36,10 @@ set hlsearch                                        " highlight searches
 set splitright                                      " want vertical splits to the right
 
 syntax on                                           " hurray for syntax highlightinge
-colorscheme xoria256                                " set colorscheme 
+colorscheme xoria256                           " set colorscheme 
+set rtp+=/usr/local/opt/fzf
+
+filetype plugin on
 
 "---------- SETTING LEADER ----------
 " Map leader key to comma
@@ -48,28 +49,39 @@ let g:mapleader=","
 "----- MAPPING IN OTHER FILE --------
 so ~/.vim/mappings.vim
 
-"---------- LETS ----------
-" php-cs-fixes use psr2 formatting
-let g:php_cs_fixer_level = "psr2"
+"---------- AUTO SOURCING ----------
+" Source the vimrc file after saving it
+augroup autosourcing
+    autocmd!
+    autocmd BufWritePost .vimrc source %
+augroup END
 
-" bookmarks on for NERDTree
+"---------- NERD TREE ----------
 let NERDTreeShowBookmarks=1
 let g:DisableAutoPHPFolding=1
 let g:acp_enableAtStartup = 0
 
-" UltiSnip
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+"---------- ULTI SNIP ----------
+" Trigger configuration. Do not use <tab> if you use
 " Expand a snippet, like for<tab>
 let g:UltiSnipsExpandTrigger="<c-j>"
 " Go to next
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 " Go to previous
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-" let ctrlp just work from CMD
+
+"---------- CTRL-P ----------
+"let ctrlp just work from CMD
 let ctrlp_working_path_mode = 0
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  'node_modules\|DS_STORE\|git',
+        \ }
+ 
+"---------- AIRLINE THEME ----------
+let g:airline_theme='angr'
 
 "---------- EMMET ----------
 let g:user_emmet_settings = {
@@ -86,50 +98,3 @@ let g:user_emmet_settings = {
 \        }
 \}
 
-"---------- SYNTASTIC ----
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_loc_list_height=3
-
-"---------- AUTO SOURCING ----------
-" Source the vimrc file after saving it
-augroup autosourcing
-    autocmd!
-    autocmd BufWritePost .vimrc source %
-augroup END
-
-"---------- CUSTOM FUNCTIONS ----------
-" Transforms the unixtimestamp under cursor to readable date
-vnoremap <Leader>m :call FromUnixtime()<CR>
-fu! FromUnixtime() 
-    normal gv"xy
-    let @x = call(function('strftime'), ["%Y-%m-%d %H:%M:%S", @x])
-    normal gvd
-    normal "xp
-endfunction
-
-" Add class to use statement
-function! IPhpInsertUse()
-    call PhpInsertUse()
-    call feedkeys('a',  'n')
-endfunction
-autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
-autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
-
-" Autocompletes to full classname
-function! IPhpExpandClass()
-    call PhpExpandClass()
-    call feedkeys('a', 'n')
-endfunction
-autocmd FileType php inoremap <Leader>ec <Esc>:call IPhpExpandClass()<CR>
-autocmd FileType php noremap <Leader>ec :call PhpExpandClass()<CR>
-
-let $LANG = 'en'
-"" sort random lines. inserts random number between 1 and 149 :read !$(( ( RANDOM % 149 )  + 1 ))

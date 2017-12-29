@@ -25,7 +25,7 @@ set mousehide                                       " hide the mouse while typin
 set printoptions=header:0,duplex:long,paper:letter  " nice printing options
 
 set cpoptions=ces$                                  " make 'cw''put a $ at the end
-"set stl=%f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B] "set the status lines
+set stl=%f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B] "set the status lines
 set laststatus=2
 set noswapfile                                      " no swap file please
 set number                                          " show line numbers
@@ -79,9 +79,6 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
     \ 'dir':  'node_modules\|DS_STORE\|git',
         \ }
- 
-"---------- AIRLINE THEME ----------
-let g:airline_theme='angr'
 
 "---------- EMMET ----------
 let g:user_emmet_settings = {

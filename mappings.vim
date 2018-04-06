@@ -45,3 +45,6 @@ nmap <Leader>r :Tags<CR>
 nmap <Leader>ev :e ~/.vimrc<cr>
 nmap <Leader>em :e ~/.vim/mappings.vim<cr>
 nmap <Leader>ep :e ~/.vim/plugins.vim<cr>
+
+" return back to previous buffer
+nmap <Leader>, <C-^>

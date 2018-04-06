@@ -56,6 +56,12 @@ augroup autosourcing
     autocmd BufWritePost .vimrc source %
 augroup END
 
+"---------- Jump back to last edited position ----------
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
+
 "---------- NERD TREE ----------
 let NERDTreeShowBookmarks=1
 let g:DisableAutoPHPFolding=1

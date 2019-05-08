@@ -2,6 +2,12 @@
 " let jj be like ESC
 imap jj <esc>
 
+" inserts new checkbox
+inoremap <Leader>[ [ ] - 
+nmap <Leader>[ ^i[ ] - 
+nmap <Leader>x 0f[lrX
+nmap <Leader>? 0lr?
+
 " Auto change directory to match current file ,cd
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 
@@ -48,3 +54,13 @@ nmap <Leader>ep :e ~/.vim/plugins.vim<cr>
 
 " return back to previous buffer
 nmap <Leader>, <C-^>
+
+" copy current file path to copybuffer
+" relative path
+nnoremap <leader>cf :let @* = expand("%")<CR>
+" absolute path
+nnoremap <leader>cp :let @* = expand("%:p")<CR>
+" filename
+nnoremap <leader>ct :let @* = expand("%:t")<CR>
+" directory name
+nnoremap <leader>ch :let @* = expand("%:p:h")<CR>

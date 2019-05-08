@@ -16,7 +16,6 @@ set linespace=8                                     " macvim specific
 set tags=tags
 set copyindent                                      " copy the previous indentation on autoindenting
 set hidden                                          " allow to create empty buffer
-
 set ignorecase                                      " ignore case when searching
 set smartcase                                       " ignore case if search pattern is all lowercase
 set scrolloff=3                                     " keep 3 lines when scrolling
@@ -34,6 +33,7 @@ set visualbell                                      " don't beep
 set noerrorbells                                    " don't beep
 set hlsearch                                        " highlight searches
 set splitright                                      " want vertical splits to the right
+set listchars=eol:↲,tab:↦\ ,nbsp:␣,extends:…,trail:⋅    " set better chars when list is set
 
 syntax on                                           " hurray for syntax highlightinge
 colorscheme xoria256                           " set colorscheme 
@@ -101,3 +101,8 @@ let g:user_emmet_settings = {
 \        }
 \}
 
+"assign html syntax to .svelte files
+augroup svelte_ft
+  au!
+  autocmd BufNewFile,BufRead *.svelte   set syntax=html
+augroup END

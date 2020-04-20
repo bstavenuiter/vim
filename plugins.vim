@@ -70,6 +70,9 @@ Plugin 'janko-m/vim-test'
 " Add better syntax support
 Plugin 'vim-syntastic/syntastic'
 
+" Status Bar improvements
+" Plugin 'vim-airline/vim-airline'
+
 call vundle#end()
 
 "ignore other plugin indent changes

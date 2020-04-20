@@ -27,17 +27,27 @@ set cpoptions=ces$                                  " make 'cw''put a $ at the e
 set stl=%f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B] "set the status lines
 set laststatus=2
 set noswapfile                                      " no swap file please
-set number                                          " show line numbers
+set number relativenumber                                          " show line numbers
 set timeout timeoutlen=200 ttimeoutlen=100
 set visualbell                                      " don't beep
 set noerrorbells                                    " don't beep
 set hlsearch                                        " highlight searches
 set splitright                                      " want vertical splits to the right
 set listchars=eol:↲,tab:↦\ ,nbsp:␣,extends:…,trail:⋅    " set better chars when list is set
+set signcolumn=yes                                  "always show the git-gutter
+
+
+" By default use ripgrep
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 
 syntax on                                           " hurray for syntax highlightinge
-colorscheme xoria256                           " set colorscheme 
+" colorscheme xoria256                              " set colorscheme 
+colorscheme dim                                     " set colorscheme 
 set rtp+=/usr/local/opt/fzf
+
 
 filetype plugin on
 
@@ -55,6 +65,9 @@ augroup autosourcing
     autocmd!
     autocmd BufWritePost .vimrc source %
 augroup END
+
+" Can use <leader><Enter> to open quickfix window results into split
+autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 
 "---------- Jump back to last edited position ----------
 autocmd BufReadPost *
@@ -106,3 +119,26 @@ augroup svelte_ft
   au!
   autocmd BufNewFile,BufRead *.svelte   set syntax=html
 augroup END
+
+" only set relative number for current focussed buffer, helps with copy lines
+augroup numbertoggle
+  autocmd!
+  " relative numbers only when not nerdtree buffer
+  autocmd BufEnter,BufEnter,FocusGained,InsertLeave * if !(&ft ==? "nerdtree") | set relativenumber | endif
+  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup END
+
+" no tabs and 2 space indenting for yml files
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml nofoldenable
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+" PHP CS FIXER
+" let g:php_cs_fixer_rules = "@PSR12"
+"
+
+
+" Git gutter
+set updatetime=100
+highlight GitGutterAdd    guifg=#009900 guibg=#575550 ctermfg=2 ctermbg=8
+highlight GitGutterChange guifg=#bbbb00 guibg=#575550 ctermfg=3 ctermbg=9
+highlight GitGutterDelete guifg=#ff2222 guibg=#575550 ctermfg=1 ctermbg=10

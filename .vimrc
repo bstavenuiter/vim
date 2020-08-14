@@ -24,17 +24,16 @@ set mousehide                                       " hide the mouse while typin
 set printoptions=header:0,duplex:long,paper:letter  " nice printing options
 
 set cpoptions=ces$                                  " make 'cw''put a $ at the end
-set stl=%f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B] "set the status lines
+set stl=\%#StatusLine#\ %f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B] "set the status lines
 set laststatus=2
 set noswapfile                                      " no swap file please
 set number relativenumber                                          " show line numbers
-set timeout timeoutlen=200 ttimeoutlen=100
+set timeout timeoutlen=200 ttimeoutlen=50
 set visualbell                                      " don't beep
 set noerrorbells                                    " don't beep
 set hlsearch                                        " highlight searches
 set splitright                                      " want vertical splits to the right
 set listchars=eol:↲,tab:↦\ ,nbsp:␣,extends:…,trail:⋅    " set better chars when list is set
-set signcolumn=yes                                  "always show the git-gutter
 
 
 " By default use ripgrep
@@ -44,17 +43,30 @@ if executable("rg")
 endif
 
 syntax on                                           " hurray for syntax highlightinge
-" colorscheme xoria256                              " set colorscheme 
-colorscheme dim                                     " set colorscheme 
+
 set rtp+=/usr/local/opt/fzf
 
+set background=dark
+colorscheme gruvbox
+
+let g:gruvbox_contrast_dark = 'hard'
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+let g:gruvbox_invert_selection='0'
 
 filetype plugin on
 
 "---------- SETTING LEADER ----------
-" Map leader key to comma
-let mapleader=","
-let g:mapleader=","
+" Map leader key to space
+let mapleader=" "
+let g:mapleader=" "
+nnoremap <SPACE> <Nop>
+
+"---------- NETRW ------------------
+let g:netrw_banner = 0
+let g:netrw_browse_split = 2
 
 "----- MAPPING IN OTHER FILE --------
 so ~/.vim/mappings.vim
@@ -77,27 +89,6 @@ autocmd BufReadPost *
 
 "---------- NERD TREE ----------
 let NERDTreeShowBookmarks=1
-let g:DisableAutoPHPFolding=1
-let g:acp_enableAtStartup = 0
-
-"---------- ULTI SNIP ----------
-" Trigger configuration. Do not use <tab> if you use
-" Expand a snippet, like for<tab>
-let g:UltiSnipsExpandTrigger="<c-j>"
-" Go to next
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" Go to previous
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-"---------- CTRL-P ----------
-"let ctrlp just work from CMD
-let ctrlp_working_path_mode = 0
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  'node_modules\|DS_STORE\|git',
-        \ }
 
 "---------- EMMET ----------
 let g:user_emmet_settings = {
@@ -131,14 +122,3 @@ augroup END
 " no tabs and 2 space indenting for yml files
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml nofoldenable
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-" PHP CS FIXER
-" let g:php_cs_fixer_rules = "@PSR12"
-"
-
-
-" Git gutter
-set updatetime=100
-highlight GitGutterAdd    guifg=#009900 guibg=#575550 ctermfg=2 ctermbg=8
-highlight GitGutterChange guifg=#bbbb00 guibg=#575550 ctermfg=3 ctermbg=9
-highlight GitGutterDelete guifg=#ff2222 guibg=#575550 ctermfg=1 ctermbg=10

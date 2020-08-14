@@ -22,21 +22,37 @@ nmap <Leader>l :set list!<CR>
 " don't close window when last buffer is deleted
 noremap <Leader>q :BD<cr>
 
+" Marco Trosi
+" remove all but current buffer
+nnoremap <Leader>da :silent %bd<BAR>e#<CR>
+
 " quickly update
 nmap <Leader>w :w!<cr>
-imap <Leader>w <C-\><C-O>:w!<cr>
 
 " leader to quickly delete windows+buffer
 nmap <Leader>bd :bd<cr>
 
 " mapped e to toggle NERDTree
-nmap <Leader>e :NERDTreeToggle<CR>
+"nmap <Leader>e :NERDTreeToggle<CR>
+
+" Open nertw
+nmap <Leader>e :Explore<CR>
+
+
+augroup netrw_mapping
+    autocmd!
+autocmd filetype netrw call NetrwMapping()
+augroup END
+
+function! NetrwMapping()
+    noremap <buffer> <c-l> <C-w>l
+endfunction
 
 " see where your file is inside nerdtree
 nmap <Leader>n :NERDTreeFind<CR>
 
 " remove highlighting after search
-nmap <Leader><space> :noh<cr>
+nmap <Leader>h :noh<cr>
 
 "make tabs switch between buffers
 nnoremap <Tab> :bnext<CR>
@@ -48,6 +64,7 @@ imap ii <c-y>,
 "fzf
 nmap <Leader>t :Files<CR>
 nmap <Leader>r :Tags<CR>
+nmap <Leader>co :Commits<CR>
 
 " close quickfix window
 nnoremap <Leader>c :cclose<CR>
@@ -66,13 +83,13 @@ vmap <Leader>y :%y+<cr>
 
 " copy current file path to copybuffer
 " relative path
-nnoremap <leader>cf :let @* = expand("%")<CR>
+nnoremap <leader>yr :let @* = expand("%")<CR>
 " absolute path
-nnoremap <leader>cp :let @* = expand("%:p")<CR>
+nnoremap <leader>ya :let @* = expand("%:p")<CR>
 " filename
-nnoremap <leader>ct :let @* = expand("%:t")<CR>
+nnoremap <leader>yf :let @* = expand("%:t")<CR>
 " directory name
-nnoremap <leader>ch :let @* = expand("%:p:h")<CR>
+nnoremap <leader>yd :let @* = expand("%:p:h")<CR>
 
 " bind K to grep word under cursor
 nnoremap K :silent grep! \'<C-R><C-W>\'<CR>:cw<CR><CR>
@@ -81,12 +98,10 @@ nnoremap K :silent grep! \'<C-R><C-W>\'<CR>:cw<CR><CR>
 nnoremap <silent><leader>fd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent><leader>ff :call PhpCsFixerFixFile()<CR>
 
-" Git gutter
-nmap <silent><leader>hn :GitGutterNextHunk<CR>
-nmap <silent><leader>hx :GitGutterPrevHunk<CR>
-
 " CoC
 nmap <leader>fq  <Plug>(coc-fix-current)
+imap <C-l> <Plug>(coc-snippets-expand)
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "<C-n>" :
       \ <SID>check_back_space() ? "<TAB>" :
@@ -98,8 +113,13 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-"inoremap <expr> <cr> pumvisible() ? "<C-y>" : "<C-g>u<CR>"
+"coc-git 
+nmap <leader>sn <Plug>(coc-git-nextchunk)
+nmap <leader>sp <Plug>(coc-git-prevchunk)
+nmap <leader>si <Plug>(coc-git-chunkinfo)
+nmap <leader>su :CocCommand git.chunkUndo<CR>
 
+"inoremap <expr> <cr> pumvisible() ? "<C-y>" : "<C-g>u<CR>"
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -110,3 +130,10 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> <leader>lx :silent %!xmllint --encode UTF-8 --format -<CR>
 "lint json
 nmap <silent> <leader>lj :%!jq '.'<CR>
+
+" open terminal below
+nmap <leader>bt :bel term<CR>
+
+" diff the current files
+nmap <leader>dt :windo diffthis<CR>
+nmap <leader>do :windo diffoff<CR>

@@ -4,7 +4,7 @@ imap jj <esc>
 " inserts new checkbox
 inoremap <Leader>[ [ ] - 
 nmap <Leader>[ ^i[ ] - 
-nmap <Leader>x 0f[lrX
+nmap <Leader>x 0f]hrX<ESC>
 nmap <Leader>? 0lr?
 
 " Auto change directory to match current file ,cd
@@ -124,6 +124,11 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> [c :call CocAction('diagnosticNext')<cr>
+nmap <silent> ]c :call CocAction('diagnosticPrevious')<cr>
+
+imap <C-l> <Plug>(coc-snippets-expand)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 "linting
 "lint XML

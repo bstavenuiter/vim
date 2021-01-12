@@ -23,18 +23,43 @@ set guifont=Consolas:h14                                 " Consolas is a nice fo
 set mousehide                                       " hide the mouse while typing
 set printoptions=header:0,duplex:long,paper:letter  " nice printing options
 
+set nobackup
+set noswapfile                                      " no swap file please
+
+set incsearch                                       " highlight search when typingset incsearch
+set signcolumn=yes                                  " useful for linting etc
 set cpoptions=ces$                                  " make 'cw''put a $ at the end
 set stl=\%#StatusLine#\ %f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B] "set the status lines
 set laststatus=2
-set noswapfile                                      " no swap file please
-set number relativenumber                                          " show line numbers
+set number relativenumber                           " show line numbers
 set timeout timeoutlen=200 ttimeoutlen=50
-set visualbell                                      " don't beep
-set noerrorbells                                    " don't beep
-set hlsearch                                        " highlight searches
+set visualbell                                      " don't beep visual
+set noerrorbells                                    " don't beep audial
 set splitright                                      " want vertical splits to the right
 set listchars=eol:↲,tab:↦\ ,nbsp:␣,extends:…,trail:⋅    " set better chars when list is set
 
+"---------- PLUGINS ----------
+call plug#begin()
+    Plug 'mileszs/ack.vim'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'mattn/emmet-vim'
+    Plug 'wincent/ferret'
+    Plug 'junegunn/fzf.vim'
+    Plug 'moll/vim-bbye'
+    Plug 'qpkorr/vim-bufkill'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-surround'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'metakirby5/codi.vim'
+    Plug 'lambdalisue/fern.vim'
+    Plug 'dahu/vimple'
+    Plug 'Raimondi/vim-buffalo'
+    Plug 'preservim/nerdcommenter'
+    
+    "Schemes
+    Plug 'morhetz/gruvbox'
+    Plug 'sonph/onehalf', {'rtp': 'vim/'}
+call plug#end()
 
 " By default use ripgrep
 if executable("rg")
@@ -42,19 +67,12 @@ if executable("rg")
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
-syntax on                                           " hurray for syntax highlightinge
+syntax on                                           " hurray for syntax highlighting
 
 set rtp+=/usr/local/opt/fzf
 
-set background=dark
-colorscheme gruvbox
-
-let g:gruvbox_contrast_dark = 'hard'
-if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-let g:gruvbox_invert_selection='0'
+colorscheme onehalflight
+set background=light
 
 filetype plugin on
 
@@ -64,11 +82,7 @@ let mapleader=" "
 let g:mapleader=" "
 nnoremap <SPACE> <Nop>
 
-"---------- NETRW ------------------
-let g:netrw_banner = 0
-let g:netrw_browse_split = 2
-let g:netrw_winsize = 25
-
+let g:init_vimple_maps_and_commands=0
 "----- MAPPING IN OTHER FILE --------
 so ~/.vim/mappings.vim
 
@@ -76,20 +90,17 @@ so ~/.vim/mappings.vim
 " Source the vimrc file after saving it
 augroup autosourcing
     autocmd!
-    autocmd BufWritePost .vimrc source %
+    autocmd BufWritePost .vimrc,mappings.vim source %
 augroup END
 
 " Can use <leader><Enter> to open quickfix window results into split
-autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
+autocmd! FileType qf nnoremap <buffer> <Leader><Enter> <C-w><Enter><C-w>L
 
 "---------- Jump back to last edited position ----------
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
-
-"---------- NERD TREE ----------
-let NERDTreeShowBookmarks=1
 
 "---------- EMMET ----------
 let g:user_emmet_settings = {
@@ -135,6 +146,7 @@ let g:ackprg = 'rg --vimgrep --smart-case'
 
 " Auto close the Quickfix list after pressing '<enter>' on a list item
 let g:ack_autoclose=1
+"let g:polyglot_disabled = ['php']
 
 " Any empty ack search will search for the work the cursor is on
 let g:ack_use_cword_for_empty_search=1
@@ -142,6 +154,7 @@ let g:ack_use_cword_for_empty_search=1
 " Don't jump to first match
 cnoreabbrev Ack Ack!
 
-" Maps <leader>/ so we're ready to type the search keyword
+" Maps <Leader>/ so we're ready to type the search keyword
 nnoremap <Leader>/ :Ack!<Space>
 " }}}
+"

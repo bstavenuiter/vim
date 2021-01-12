@@ -3,7 +3,7 @@
 	url = https://github.com/mileszs/ack.vim.git
 [submodule "pack/plugins/start/auto-pairs"]
 	path = pack/plugins/start/auto-pairs
-	url = git@github.com:jiangmiao/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs
 [submodule "pack/plugins/start/emmet-vim"]
 	path = pack/plugins/start/emmet-vim
 	url = git@github.com:mattn/emmet-vim.git
@@ -37,3 +37,6 @@
 [submodule "pack/plugins/start/vim-surround"]
 	path = pack/plugins/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "auto-pairs"]
+	path = auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs

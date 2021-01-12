@@ -1,39 +1,6 @@
-[submodule "pack/plugins/start/ack"]
-	path = pack/plugins/start/ack
-	url = https://github.com/mileszs/ack.vim.git
-[submodule "pack/plugins/start/auto-pairs"]
-	path = pack/plugins/start/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs
-[submodule "pack/plugins/start/emmet-vim"]
-	path = pack/plugins/start/emmet-vim
-	url = git@github.com:mattn/emmet-vim.git
 [submodule "pack/plugins/start/ferret"]
 	path = pack/plugins/start/ferret
 	url = git@github.com:wincent/ferret.git	
-[submodule "pack/plugins/start/fzf"]
-	path = pack/plugins/start/fzf
-	url = git@github.com:junegunn/fzf.vim.git
-[submodule "pack/plugins/start/nerdcommenter"]
-	path = pack/plugins/start/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter
-[submodule "pack/plugins/start/nerdtree"]
-	path = pack/plugins/start/nerdtree
-	url = git@github.com:scrooloose/nerdtree.git
-[submodule "pack/plugins/start/vim-bbye"]
-	path = pack/plugins/start/vim-bbye
-	url = git@github.com:moll/vim-bbye.git
-[submodule "pack/plugins/start/vim-bufkill"]
-	path = pack/plugins/start/vim-bufkill
-	url = git@github.com:qpkorr/vim-bufkill.git
-[submodule "pack/plugins/start/vim-fugitive"]
-	path = pack/plugins/start/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
 [submodule "pack/plugins/start/vim-gitgutter"]
 	path = pack/plugins/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
-[submodule "pack/plugins/start/vim-polyglot"]
-	path = pack/plugins/start/vim-polyglot
-	url = git@github.com:sheerun/vim-polyglot.git
-[submodule "pack/plugins/start/vim-surround"]
-	path = pack/plugins/start/vim-surround
-	url = https://github.com/tpope/vim-surround.git

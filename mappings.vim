@@ -1,8 +1,10 @@
 "---------- MAPPINGS ----------
+imap <c-x><c-c> <plug>vimple_completers_trigger
 " let jj be like ESC
 imap jj <esc>
+
 " inserts new checkbox
-inoremap <Leader>[ [ ] - 
+"inoremap <Leader>[ [ ] - 
 nmap <Leader>[ ^i[ ] - 
 nmap <Leader>x 0f]hrX<ESC>
 nmap <Leader>? 0lr?
@@ -16,11 +18,20 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
+"Resize windows
+nnoremap <Leader><up> :resize -1<CR>
+nnoremap <Leader><down> :resize +1<CR>
+nnoremap <Leader><left> :vertical resize -1<CR>
+nnoremap <Leader><right> :vertical resize +1<CR>
+
 " shortcut to toggle set list
 nmap <Leader>l :set list!<CR>
 
 " don't close window when last buffer is deleted
 noremap <Leader>q :BD<cr>
+
+"Show buffes using buffalo
+nmap <silent> <Leader>i <Plug>BuffaloTrigger
 
 " Marco Trosi
 " remove all but current buffer
@@ -29,30 +40,29 @@ nnoremap <Leader>da :silent %bd<BAR>e#<CR>
 " quickly update
 nmap <Leader>w :w!<cr>
 
-" leader to quickly delete windows+buffer
+" Leader to quickly delete windows+buffer
 nmap <Leader>bd :bd<cr>
 
-" mapped e to toggle NERDTree
-"nmap <Leader>e :NERDTreeToggle<CR>
+" Open Fern
+nmap <silent> <Leader>e :Fern . -drawer -toggle<CR>
+nmap <silent> <Leader>n :Fern . -reveal=% -drawer<CR>
 
-" Open nertw
-nmap <Leader>e :Explore<CR>
-
-
-augroup netrw_mapping
-    autocmd!
-autocmd filetype netrw call NetrwMapping()
-augroup END
-
-function! NetrwMapping()
-    noremap <buffer> <c-l> <C-w>l
+function! s:init_fern() abort
+    nmap <buffer> <C-v> <Plug>(fern-action-open:vsplit)
+    "make it easy to go to right side
+    nmap <buffer> <C-l> <C-w>l
+    "Quit via q
+    nmap <buffer> <C-q> :Fern . -drawer -toggle<CR>
+    nmap <buffer> <C-o> <Plug>(fern-action-expand)
 endfunction
 
-" see where your file is inside nerdtree
-nmap <Leader>n :NERDTreeFind<CR>
+augroup fern-custom
+    autocmd! *
+    autocmd FileType fern call s:init_fern()
+augroup END
 
 " remove highlighting after search
-nmap <Leader>h :noh<cr>
+nmap <silent> <Leader>h :noh<cr>
 
 "make tabs switch between buffers
 nnoremap <Tab> :bnext<CR>
@@ -83,41 +93,55 @@ vmap <Leader>y :%y+<cr>
 
 " copy current file path to copybuffer
 " relative path
-nnoremap <leader>yr :let @* = expand("%")<CR>
+nnoremap <Leader>yr :let @* = expand("%")<CR>
 " absolute path
-nnoremap <leader>ya :let @* = expand("%:p")<CR>
+nnoremap <Leader>ya :let @* = expand("%:p")<CR>
 " filename
-nnoremap <leader>yf :let @* = expand("%:t")<CR>
+nnoremap <Leader>yf :let @* = expand("%:t")<CR>
 " directory name
-nnoremap <leader>yd :let @* = expand("%:p:h")<CR>
+nnoremap <Leader>yd :let @* = expand("%:p:h")<CR>
 
 " bind K to grep word under cursor
 nnoremap K :silent grep! \'<C-R><C-W>\'<CR>:cw<CR><CR>
 
 " PHP CS FIXER
-nnoremap <silent><leader>fd :call PhpCsFixerFixDirectory()<CR>
-nnoremap <silent><leader>ff :call PhpCsFixerFixFile()<CR>
+nnoremap <silent><Leader>fd :call PhpCsFixerFixDirectory()<CR>
+nnoremap <silent><Leader>ff :call PhpCsFixerFixFile()<CR>
 
 " CoC
-nmap <leader>fq  <Plug>(coc-fix-current)
+nmap <Leader>fq  <Plug>(coc-fix-current)
 imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "<C-p>" : "<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+    
+let g:coc_snippet_next = '<tab>'
+
+"inoremap <silent><expr> <TAB>
+      "\ pumvisible() ? "<C-n>" :
+      "\ <SID>check_back_space() ? "<TAB>" :
+      "\ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "<C-p>" : "<C-h>"
+
+"function! s:check_back_space() abort
+  "let col = col('.') - 1
+  "return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
 
 "coc-git 
-nmap <leader>sn <Plug>(coc-git-nextchunk)
-nmap <leader>sp <Plug>(coc-git-prevchunk)
-nmap <leader>si <Plug>(coc-git-chunkinfo)
-nmap <leader>su :CocCommand git.chunkUndo<CR>
+nmap <Leader>sn <Plug>(coc-git-nextchunk)
+nmap <Leader>sp <Plug>(coc-git-prevchunk)
+nmap <Leader>si <Plug>(coc-git-chunkinfo)
+nmap <Leader>su :CocCommand git.chunkUndo<CR>
 
 "inoremap <expr> <cr> pumvisible() ? "<C-y>" : "<C-g>u<CR>"
 nmap <silent> gd <Plug>(coc-definition)
@@ -132,13 +156,24 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 "linting
 "lint XML
-nmap <silent> <leader>lx :silent %!xmllint --encode UTF-8 --format -<CR>
+nmap <silent> <Leader>lx :silent %!xmllint --encode UTF-8 --format -<CR>
 "lint json
-nmap <silent> <leader>lj :%!jq '.'<CR>
+nmap <silent> <Leader>lj :%!jq '.'<CR>
 
 " open terminal below
-nmap <leader>bt :bel term<CR>
+nmap <Leader>bt :bel term<CR>
 
 " diff the current files
-nmap <leader>dt :windo diffthis<CR>
-nmap <leader>do :windo diffoff<CR>
+nmap <Leader>dt :windo diffthis<CR>
+nmap <Leader>do :windo diffoff<CR>
+
+" Create an empty line
+nmap <Leader>o o<ESC>
+nmap <Leader>O O<ESC>
+
+" No yanking!
+vnoremap X "_d
+vnoremap <Leader>p "_dP
+
+"Codi
+nmap <Leader>cp :Codi<CR>

@@ -31,7 +31,7 @@ nmap <Leader>l :set list!<CR>
 noremap <Leader>q :BD<cr>
 
 "Show buffes using buffalo
-nmap <silent> <Leader>i <Plug>BuffaloTrigger
+nmap <silent> <Leader>b <Plug>BuffaloTrigger
 
 " Marco Trosi
 " remove all but current buffer
@@ -43,23 +43,23 @@ nmap <Leader>w :w!<cr>
 " Leader to quickly delete windows+buffer
 nmap <Leader>bd :bd<cr>
 
-" Open Fern
-nmap <silent> <Leader>e :Fern . -drawer -toggle<CR>
-nmap <silent> <Leader>n :Fern . -reveal=% -drawer<CR>
+"" Open Fern
+"nmap <silent> <Leader>e :Fern . -drawer -toggle<CR>
+"nmap <silent> <Leader>n :Fern . -reveal=% -drawer<CR>
 
-function! s:init_fern() abort
-    nmap <buffer> <C-v> <Plug>(fern-action-open:vsplit)
-    "make it easy to go to right side
-    nmap <buffer> <C-l> <C-w>l
-    "Quit via q
-    nmap <buffer> <C-q> :Fern . -drawer -toggle<CR>
-    nmap <buffer> <C-o> <Plug>(fern-action-expand)
-endfunction
+"function! s:init_fern() abort
+    "nmap <buffer> <C-v> <Plug>(fern-action-open:vsplit)
+    ""make it easy to go to right side
+    "nmap <buffer> <C-l> <C-w>l
+    ""Quit via q
+    "nmap <buffer> <C-q> :Fern . -drawer -toggle<CR>
+    "nmap <buffer> <C-o> <Plug>(fern-action-expand)
+"endfunction
 
-augroup fern-custom
-    autocmd! *
-    autocmd FileType fern call s:init_fern()
-augroup END
+"augroup fern-custom
+    "autocmd! *
+    "autocmd FileType fern call s:init_fern()
+"augroup END
 
 " remove highlighting after search
 nmap <silent> <Leader>h :noh<cr>
@@ -198,3 +198,12 @@ nmap <leader>sp <plug>(signify-prev-hunk)
 
 " php cs fixer
 nnoremap <silent><leader>ff :call PhpCsFixerFixFile()<CR>
+
+" Open files located in the same dir in with the current file is edited
+nnoremap <leader>ew :e <C-R>=expand("%:.:h") . "/"<CR>
+
+" timestamp formatting use on timestamp to get date formatted string
+nnoremap <leader>df :read ! date -r <C-R><C-A> +\\%Y-\\%m-\\%d
+" select date formatted string like 2021-01-18 12:12:12 and get the unix
+" timestamp, uses macOs date
+vnoremap <leader>df y:read ! date -j -f "\\%Y-\\%m-\\%d \\%H:\\%M:\\%S" "<C-R>"" +\\%s

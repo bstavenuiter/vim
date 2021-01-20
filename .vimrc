@@ -49,6 +49,9 @@ call plug#begin()
     Plug 'dahu/vimple'
     Plug 'Raimondi/vim-buffalo'
     Plug 'preservim/nerdcommenter'
+    Plug 'romainl/vim-cool'
+
+    " LSP
     Plug 'prabirshrestha/vim-lsp'
     Plug 'mattn/vim-lsp-settings'
     Plug 'prabirshrestha/asyncomplete.vim'
@@ -102,21 +105,6 @@ autocmd BufReadPost *
   \   exe "normal g`\"" |
   \ endif
 
-"---------- EMMET ----------
-let g:user_emmet_settings = {
-\        'php' : {
-\        'extends' : 'html',
-\        'filters' : 'html,c'
-\        },
-\        'blade' : {
-\        'extends' : 'html',
-\        'filters' : 'html,c'
-\        },
-\        'html' : {
-\            'filters' : 'c'
-\        }
-\}
-
 "assign html syntax to .svelte files
 augroup svelte_ft
   au!
@@ -134,84 +122,3 @@ augroup END
 " no tabs and 2 space indenting for yml files
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml nofoldenable
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-" ack.vim --- {{{
-
-" Use ripgrep for searching ⚡️
-" Options include:
-" --vimgrep -> Needed to parse the rg response properly for ack.vim
-" --type-not sql -> Avoid huge sql file dumps as it slows down the search
-" --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
-let g:ackprg = 'rg --vimgrep --smart-case'
-
-" Auto close the Quickfix list after pressing '<enter>' on a list item
-let g:ack_autoclose=1
-"let g:polyglot_disabled = ['php']
-
-" Any empty ack search will search for the work the cursor is on
-let g:ack_use_cword_for_empty_search=1
-
-" Don't jump to first match
-cnoreabbrev Ack Ack!
-
-" Maps <Leader>/ so we're ready to type the search keyword
-nnoremap <Leader>/ :Ack!<Space>
-" }}}
-"
-
-if executable('intelephense')
-  augroup LspPHPIntelephense
-    au!
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'intelephense',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'intelephense --stdio']},
-        \ 'whitelist': ['php'],
-        \ 'initialization_options': {'storagePath': '/tmp/intelephense'},
-        \ 'workspace_config': {
-        \   'intelephense': {
-        \     'files': {
-        \       'maxSize': 1000000,
-        \       'associations': ['*.php', '*.phtml'],
-        \       'exclude': [],
-        \     },
-        \     'completion': {
-        \       'insertUseDeclaration': v:true,
-        \       'fullyQualifyGlobalConstantsAndFunctions': v:false,
-        \       'triggerParameterHints': v:true,
-        \       'maxItems': 100,
-        \     },
-        \     'format': {
-        \       'enable': v:true
-        \     },
-        \   },
-        \ }
-        \})
-  augroup END
-endif
-
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gs <plug>(lsp-document-symbol-search)
-    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> gt <plug>(lsp-type-definition)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
-    nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
-
-    let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-    
-    " refer to doc to add more commands
-endfunction
-
-augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END

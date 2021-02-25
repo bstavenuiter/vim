@@ -43,21 +43,25 @@ call plug#begin()
     Plug 'moll/vim-bbye'
     Plug 'qpkorr/vim-bufkill'
     Plug 'tpope/vim-fugitive'
+    Plug 'shumphrey/fugitive-gitlab.vim'
     Plug 'tpope/vim-surround'
     " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'metakirby5/codi.vim'
-    Plug 'lambdalisue/fern.vim'
-    Plug 'dahu/vimple'
-    Plug 'Raimondi/vim-buffalo'
+    Plug 'metakirby5/codi.vim' "pecl inside buffer
+    "Plug 'lambdalisue/fern.vim' "file manager
+    Plug 'dahu/vimple' "dependency of buffalo
+    Plug 'Raimondi/vim-buffalo' "quick buffer finder
     Plug 'preservim/nerdcommenter'
-    Plug 'romainl/vim-cool'
+    Plug 'romainl/vim-cool' "disable search highligth when done
+    Plug 'tpope/vim-abolish' "spelling fixer
+    Plug 'mhinz/vim-signify' "Git integration in sign column
+    Plug 'wellle/targets.vim' "better text objects
+    Plug 'osyo-manga/vim-over' "highlight search replace
 
     " LSP
     Plug 'prabirshrestha/vim-lsp'
     Plug 'mattn/vim-lsp-settings'
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    Plug 'mhinz/vim-signify' " Git integration in sign column
     Plug 'stephpy/vim-php-cs-fixer'
     
     "Schemes

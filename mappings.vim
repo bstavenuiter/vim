@@ -182,7 +182,6 @@ nmap <Leader>cp :Codi<CR>
 " Faster sign updates on CursorHold/CursorHoldI
 set updatetime=100
 
-nnoremap <leader>sd :SignifyDiff<cr>
 nnoremap <leader>sd :SignifyHunkDiff<cr>
 nnoremap <leader>su :SignifyHunkUndo<cr>
 
@@ -203,7 +202,33 @@ nnoremap <silent><leader>ff :call PhpCsFixerFixFile()<CR>
 nnoremap <leader>ew :e <C-R>=expand("%:.:h") . "/"<CR>
 
 " timestamp formatting use on timestamp to get date formatted string
-nnoremap <leader>df :read ! date -r <C-R><C-A> +\\%Y-\\%m-\\%d
+nnoremap <leader>df :put =strftime('%Y-%m-%d %H:%M:%S', <C-R><C-A>)<CR>
 " select date formatted string like 2021-01-18 12:12:12 and get the unix
 " timestamp, uses macOs date
 vnoremap <leader>df y:read ! date -j -f "\\%Y-\\%m-\\%d \\%H:\\%M:\\%S" "<C-R>"" +\\%s
+" insert year-month-day at next line, read: insert current date time
+nnoremap <leader>idt :put =strftime('%Y-%m-%d %H:%M:%S')<CR>
+" insert year-month-day at next line, read: insert current date
+nnoremap <leader>id :put =strftime('%Y-%m-%d')<CR>
+" insert time at next line, read: insert current time
+nnoremap <leader>it :put =strftime('%H:%M:%S')<CR>
+
+" operate on line, cil, yil, dil all work now
+xnoremap <silent> il :<c-u>normal! g_v^<cr>
+onoremap <silent> il :<c-u>normal! g_v^<cr>
+" operate on line, cal, yal, dal all work now
+xnoremap <silent> al :<c-u>normal! $v0<cr>
+onoremap <silent> al :<c-u>normal! $v0<cr>
+
+function! VisualFindAndReplace()
+    :OverCommandLine%s/
+    :w
+endfunction
+function! VisualFindAndReplaceWithSelection() range
+    :'<,'>OverCommandLine s/
+    :w
+endfunction
+
+let g:over_enable_auto_nohlsearch = 1
+nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
+xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>

@@ -56,6 +56,7 @@ call plug#begin()
     Plug 'mhinz/vim-signify' "Git integration in sign column
     Plug 'wellle/targets.vim' "better text objects
     Plug 'osyo-manga/vim-over' "highlight search replace
+    Plug 'machakann/vim-highlightedyank' "highlight your yankin'
 
     " LSP
     Plug 'prabirshrestha/vim-lsp'

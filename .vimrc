@@ -32,6 +32,11 @@ set visualbell                                      " don't beep visual
 set noerrorbells                                    " don't beep audial
 set splitright                                      " want vertical splits to the right
 set listchars=eol:↲,tab:↦\ ,nbsp:␣,extends:…,trail:⋅    " set better chars when list is set
+set termguicolors                                   "for better colors and italics
+
+" italics
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 
 "---------- PLUGINS ----------
 call plug#begin()
@@ -81,14 +86,13 @@ syntax on                                           " hurray for syntax highligh
 
 set rtp+=/usr/local/opt/fzf
 
+"for italics
+let g:palenight_terminal_italics=1
+let g:airline_theme = "palenight"
+
 "colorscheme onehalflight
 colorscheme palenight
-let g:palenight_terminal_italics=1
 set background=dark
-
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
 
 filetype plugin on
 

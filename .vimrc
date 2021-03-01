@@ -68,6 +68,7 @@ call plug#begin()
     "Schemes
     " Plug 'morhetz/gruvbox'
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
+    Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
 " By default use ripgrep
@@ -80,8 +81,14 @@ syntax on                                           " hurray for syntax highligh
 
 set rtp+=/usr/local/opt/fzf
 
-colorscheme onehalflight
-set background=light
+"colorscheme onehalflight
+colorscheme palenight
+let g:palenight_terminal_italics=1
+set background=dark
+
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
 
 filetype plugin on
 

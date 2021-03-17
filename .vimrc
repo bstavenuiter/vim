@@ -44,6 +44,7 @@ call plug#begin()
     Plug 'jiangmiao/auto-pairs'
     Plug 'mattn/emmet-vim'
     Plug 'wincent/ferret'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'moll/vim-bbye'
     Plug 'qpkorr/vim-bufkill'

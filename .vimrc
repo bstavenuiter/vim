@@ -67,6 +67,8 @@ call plug#begin()
     Plug 'wellle/targets.vim' "better text objects
     Plug 'osyo-manga/vim-over' "highlight search replace
     Plug 'machakann/vim-highlightedyank' "highlight your yankin'
+    Plug 'tpope/vim-speeddating' "better date support
+    Plug 'tpope/vim-repeat' "repeating plugin mappings
 
     " LSP
     Plug 'prabirshrestha/vim-lsp'

@@ -70,12 +70,16 @@ call plug#begin()
     Plug 'tpope/vim-speeddating' "better date support
     Plug 'tpope/vim-repeat' "repeating plugin mappings
 
+    " File managing
+    Plug 'vifm/vifm.vim' " file manager vifm
+
     " LSP
     Plug 'prabirshrestha/vim-lsp'
     Plug 'mattn/vim-lsp-settings'
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
     Plug 'stephpy/vim-php-cs-fixer'
+    Plug 'sheerun/vim-polyglot'
 
     " Workflow
     Plug 'vimwiki/vimwiki'

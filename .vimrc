@@ -90,6 +90,12 @@ call plug#begin()
     Plug 'drewtempelmeyer/palenight.vim'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+
+    " Experimental, neovim 0.5
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+    Plug 'sainnhe/edge'
+
+
 call plug#end()
 
 " By default use ripgrep

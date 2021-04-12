@@ -76,6 +76,9 @@ call plug#begin()
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
     Plug 'stephpy/vim-php-cs-fixer'
+
+    " Workflow
+    Plug 'vimwiki/vimwiki'
     
     "Schemes
     " Plug 'morhetz/gruvbox'

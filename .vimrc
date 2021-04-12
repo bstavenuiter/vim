@@ -23,7 +23,7 @@ set noswapfile                                      " no swap file please
 set incsearch                                       " highlight search when typingset incsearch
 set signcolumn=yes                                  " useful for linting etc
 set cpoptions=ces$                                  " make 'cw''put a $ at the end
-set stl=\%#StatusLine#\ %{FugitiveStatusline()}\ %f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B] "set the status lines
+"set stl=\%#StatusLine#\ %{FugitiveStatusline()}\ %f\ %m\ %r\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B] "set the status lines
 
 set laststatus=2
 set number relativenumber                           " show line numbers

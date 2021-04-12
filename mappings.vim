@@ -233,5 +233,8 @@ let g:over_enable_auto_nohlsearch = 1
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
+" toggle spelling
+nmap <Leader>sp :setlocal spell! spelllang=en,nl<CR>
+
 " open links in browser instead of wgetting the conents, see :h netrw-gx
 nmap gx :silent execute "!open " . shellescape("<cWORD>")<CR>

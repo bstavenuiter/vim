@@ -5,9 +5,9 @@ imap jj <esc>
 
 " inserts new checkbox
 "inoremap <Leader>[ [ ] - 
-nmap <Leader>[ ^i[ ] - 
-nmap <Leader>x 0f]hrX<ESC>
-nmap <Leader>? 0lr?
+nnoremap <Leader>[ ^i- [ ] 
+nnoremap <Leader>x 0f]hrX<ESC>
+nnoremap <Leader>? 0lr?
 
 " Auto change directory to match current file ,cd
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>

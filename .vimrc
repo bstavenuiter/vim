@@ -88,6 +88,8 @@ call plug#begin()
     " Plug 'morhetz/gruvbox'
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
     Plug 'drewtempelmeyer/palenight.vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " By default use ripgrep

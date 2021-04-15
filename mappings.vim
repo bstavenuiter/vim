@@ -207,11 +207,14 @@ nnoremap <leader>df :put =strftime('%Y-%m-%d %H:%M:%S', <C-R><C-A>)<CR>
 " timestamp, uses macOs date
 vnoremap <leader>df y:read ! date -j -f "\\%Y-\\%m-\\%d \\%H:\\%M:\\%S" "<C-R>"" +\\%s
 " insert year-month-day at next line, read: insert current date time
-nnoremap <leader>idt :put =strftime('%Y-%m-%d %H:%M:%S')<CR>
+nnoremap <leader>idt :let @a=strftime('%Y-%m-%d %H:%M:%S')<CR>"ap
+inoremap <leader>idt <C-R>=strftime('%Y-%m-%d %H:%M:%S')<CR>
 " insert year-month-day at next line, read: insert current date
-nnoremap <leader>id :put =strftime('%Y-%m-%d')<CR>
+nnoremap <leader>id :let @a=strftime('%Y-%m-%d')<CR>"ap
+inoremap <leader>id <C-R>=strftime('%Y-%m-%d')<CR>
 " insert time at next line, read: insert current time
-nnoremap <leader>it :put =strftime('%H:%M:%S')<CR>
+nnoremap <leader>it :let @a=strftime('%H:%M:%S')<CR>"ap
+inoremap <leader>it <C-R>=strftime('%H:%M:%S')<CR>
 
 " operate on line, cil, yil, dil all work now
 xnoremap <silent> il :<c-u>normal! g_v^<cr>

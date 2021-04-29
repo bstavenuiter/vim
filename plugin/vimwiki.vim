@@ -8,6 +8,6 @@ hi VimwikiHeader5 guifg=#ff869a
 hi VimwikiHeader6 guifg=#ff5370
 
 let g:vimwiki_folding='syntax'
-autocmd BufEnter diary.wiki :VimwikiDiaryGenerateLinks
+"autocmd BufEnter diary.wiki :VimwikiDiaryGenerateLinks
 
-nmap <Leader>sp :setlocal spell! spelllang=en,nl<CR>
+nnoremap <Leader>sp :setlocal spell! spelllang=en,nl<CR>

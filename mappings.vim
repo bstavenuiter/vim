@@ -19,10 +19,10 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
 "Resize windows
-nnoremap <Leader><up> :resize -1<CR>
-nnoremap <Leader><down> :resize +1<CR>
-nnoremap <Leader><left> :vertical resize -1<CR>
-nnoremap <Leader><right> :vertical resize +1<CR>
+nnoremap <Leader><up> :resize -5<CR>
+nnoremap <Leader><down> :resize +5<CR>
+nnoremap <Leader><left> :vertical resize -5<CR>
+nnoremap <Leader><right> :vertical resize +5<CR>
 
 " shortcut to toggle set list
 nmap <Leader>l :set list!<CR>
@@ -161,15 +161,16 @@ nmap <silent> <Leader>lx :silent %!xmllint --encode UTF-8 --format -<CR>
 nmap <silent> <Leader>lj :%!jq '.'<CR>
 
 " open terminal below
-nmap <Leader>bt :bel term<CR>
+nnoremap <Leader>tb :sp<CR> <Bar> :term<CR>
+nnoremap <Leader>tr :vsp<CR> <Bar> :term<CR>
 
 " diff the current files
-nmap <Leader>dt :windo diffthis<CR>
-nmap <Leader>do :windo diffoff<CR>
+nnoremap <Leader>dt :windo diffthis<CR>
+nnoremap <Leader>do :windo diffoff<CR>
 
 " Create an empty line
-nmap <Leader>o o<ESC>
-nmap <Leader>O O<ESC>
+nnoremap <Leader>o o<ESC>
+nnoremap <Leader>O O<ESC>
 
 " No yanking!
 vnoremap X "_d
@@ -238,7 +239,7 @@ nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
 " toggle spelling
-nmap <Leader>sp :setlocal spell! spelllang=en,nl<CR>
+" nmap <Leader>sp :setlocal spell! spelllang=en,nl<CR>
 
 " open links in browser instead of wgetting the conents, see :h netrw-gx
-nmap gx :silent execute "!open " . shellescape("<cWORD>")<CR>
+nmap gx :silent execute "!open " . shellescape("<cWORD>") <CR>

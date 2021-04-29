@@ -31,6 +31,7 @@ set timeout timeoutlen=200 ttimeoutlen=50
 set visualbell                                      " don't beep visual
 set noerrorbells                                    " don't beep audial
 set splitright                                      " want vertical splits to the right
+set splitbelow                                      " want horizontal splits to the below
 set listchars=eol:↲,tab:↦\ ,nbsp:␣,extends:…,trail:⋅    " set better chars when list is set
 set termguicolors                                   "for better colors and italics
 set undodir=~/.vim/undodir                          " never loose anything your write
@@ -88,12 +89,13 @@ call plug#begin()
     " Plug 'morhetz/gruvbox'
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
     Plug 'drewtempelmeyer/palenight.vim'
+    Plug 'sainnhe/edge'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 
     " Experimental, neovim 0.5
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-    Plug 'sainnhe/edge'
+    " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+    "
 
 
 call plug#end()
@@ -113,7 +115,7 @@ let g:palenight_terminal_italics=1
 let g:airline_theme = "palenight"
 
 "colorscheme onehalflight
-colorscheme palenight
+colorscheme edge
 set background=dark
 
 filetype plugin on

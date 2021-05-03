@@ -59,8 +59,6 @@ call plug#begin()
     " Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'metakirby5/codi.vim' "pecl inside buffer
     "Plug 'lambdalisue/fern.vim' "file manager
-    Plug 'dahu/vimple' "dependency of buffalo
-    Plug 'Raimondi/vim-buffalo' "quick buffer finder
     Plug 'preservim/nerdcommenter'
     Plug 'romainl/vim-cool' "disable search highligth when done
     Plug 'tpope/vim-abolish' "spelling fixer

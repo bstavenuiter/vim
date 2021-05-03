@@ -30,9 +30,6 @@ nmap <Leader>l :set list!<CR>
 " don't close window when last buffer is deleted
 noremap <Leader>q :BD<cr>
 
-"Show buffes using buffalo
-nmap <silent> <Leader>b <Plug>BuffaloTrigger
-
 " Marco Trosi
 " remove all but current buffer
 nnoremap <Leader>da :silent %bd<BAR>e#<CR>

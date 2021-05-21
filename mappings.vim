@@ -50,20 +50,20 @@ nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
 " map II to quickly do emmet autocomplete
-imap ii <c-y>,
+inoremap ii <c-y>,
 
 "fzf
-nmap <Leader>t :Files<CR>
-nmap <Leader>r :Tags<CR>
-nmap <Leader>co :Commits<CR>
+nnoremap <Leader>t :Files<CR>
+nnoremap <Leader>r :Tags<CR>
+nnoremap <Leader>co :Commits<CR>
 
 " close quickfix window
 nnoremap <Leader>c :cclose<CR>
 
 " quickly edit .vimrc
-nmap <Leader>ev :e ~/.vimrc<cr>
-nmap <Leader>em :e ~/.vim/mappings.vim<cr>
-nmap <Leader>ep :e ~/.vim/plugins.vim<cr>
+nnoremap <Leader>ev :e ~/.vimrc<cr>
+nnoremap <Leader>em :e ~/.vim/mappings.vim<cr>
+nnoremap <Leader>ep :e ~/.vim/plugins.vim<cr>
 
 " return back to previous buffer
 nmap <Leader>, <C-^>

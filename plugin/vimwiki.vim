@@ -9,5 +9,3 @@ hi VimwikiHeader6 guifg=#ff5370
 
 let g:vimwiki_folding='syntax'
 "autocmd BufEnter diary.wiki :VimwikiDiaryGenerateLinks
-
-nnoremap <Leader>sp :setlocal spell! spelllang=en,nl<CR>

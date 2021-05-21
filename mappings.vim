@@ -40,23 +40,7 @@ nmap <Leader>w :w!<cr>
 " Leader to quickly delete windows+buffer
 nmap <Leader>bd :bd<cr>
 
-"" Open Fern
-"nmap <silent> <Leader>e :Fern . -drawer -toggle<CR>
-"nmap <silent> <Leader>n :Fern . -reveal=% -drawer<CR>
-
-"function! s:init_fern() abort
-    "nmap <buffer> <C-v> <Plug>(fern-action-open:vsplit)
-    ""make it easy to go to right side
-    "nmap <buffer> <C-l> <C-w>l
-    ""Quit via q
-    "nmap <buffer> <C-q> :Fern . -drawer -toggle<CR>
-    "nmap <buffer> <C-o> <Plug>(fern-action-expand)
-"endfunction
-
-"augroup fern-custom
-    "autocmd! *
-    "autocmd FileType fern call s:init_fern()
-"augroup END
+nnoremap <Leader>b :Buffers<CR>
 
 " remove highlighting after search
 nmap <silent> <Leader>h :noh<cr>

@@ -179,3 +179,22 @@ inoremap <A-h> <C-\><C-N><C-w>h
 inoremap <A-j> <C-\><C-N><C-w>j
 inoremap <A-k> <C-\><C-N><C-w>k
 inoremap <A-l> <C-\><C-N><C-w>l
+
+"PHP RUN PHPUNIT Tests
+function! RunPHPUnitTest(filter)
+    "cd %:p:h
+    if a:filter
+        normal! T yw
+        let result = system("./vendor/bin/phpunit --filter " . @" . " " . bufname("%"))
+    else
+        let result = system("./vendor/bin/phpunit " . bufname("%"))
+    endif
+    split __PHPUnit_Result__
+    normal! ggdG
+    setlocal buftype=nofile
+    call append(0, split(result, '\v\n'))
+    cd -
+endfunction
+
+nnoremap <leader>rt :call RunPHPUnitTest(0)<cr>
+nnoremap <leader>rtf :call RunPHPUnitTest(1)<cr>

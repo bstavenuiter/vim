@@ -89,52 +89,6 @@ nnoremap K :silent grep! \'<C-R><C-W>\'<CR>:cw<CR><CR>
 nnoremap <silent><Leader>fd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent><Leader>ff :call PhpCsFixerFixFile()<CR>
 
-" CoC
-"nmap <Leader>fq  <Plug>(coc-fix-current)
-"imap <C-l> <Plug>(coc-snippets-expand)
-"vmap <C-j> <Plug>(coc-snippets-select)
-
-"inoremap <silent><expr> <TAB>
-      "\ pumvisible() ? coc#_select_confirm() :
-      "\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      "\ <SID>check_back_space() ? "<TAB>" :
-      "\ coc#refresh()
-
-"function! s:check_back_space() abort
-  "let col = col('.') - 1
-  "return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-    
-"let g:coc_snippet_next = '<tab>'
-
-"inoremap <silent><expr> <TAB>
-      "\ pumvisible() ? "<C-n>" :
-      "\ <SID>check_back_space() ? "<TAB>" :
-      "\ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "<C-p>" : "<C-h>"
-
-"function! s:check_back_space() abort
-  "let col = col('.') - 1
-  "return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-
-"coc-git 
-"nmap <Leader>sn <Plug>(coc-git-nextchunk)
-"nmap <Leader>sp <Plug>(coc-git-prevchunk)
-"nmap <Leader>si <Plug>(coc-git-chunkinfo)
-"nmap <Leader>su :CocCommand git.chunkUndo<CR>
-
-"inoremap <expr> <cr> pumvisible() ? "<C-y>" : "<C-g>u<CR>"
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-" nmap <silent> [c :call CocAction('diagnosticNext')<cr>
-" nmap <silent> ]c :call CocAction('diagnosticPrevious')<cr>
-
-"imap <C-l> <Plug>(coc-snippets-expand)
-"imap <C-j> <Plug>(coc-snippets-expand-jump)
-
 "linting
 "lint XML
 nmap <silent> <Leader>lx :silent %!xmllint --encode UTF-8 --format -<CR>

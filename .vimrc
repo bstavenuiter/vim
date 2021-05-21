@@ -163,3 +163,5 @@ augroup END
 " no tabs and 2 space indenting for yml files
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml nofoldenable
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+let g:python3_host_prog = '/usr/local/bin/python3'

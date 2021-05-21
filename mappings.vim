@@ -169,3 +169,13 @@ xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
 " open links in browser instead of wgetting the conents, see :h netrw-gx
 nmap gx :silent execute "!open " . shellescape("<cWORD>") <CR>
+
+" terminal shortcuts
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l

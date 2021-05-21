@@ -125,12 +125,6 @@ nnoremap <leader>su :SignifyHunkUndo<cr>
 nmap <leader>sn <plug>(signify-next-hunk)
 nmap <leader>sp <plug>(signify-prev-hunk)
 
-" hunk text object
-"omap ic <plug>(signify-motion-inner-pending)
-"xmap ic <plug>(signify-motion-inner-visual)
-"omap ac <plug>(signify-motion-outer-pending)
-"xmap ac <plug>(signify-motion-outer-visual)
-
 " php cs fixer
 nnoremap <silent><leader>ff :call PhpCsFixerFixFile()<CR>
 

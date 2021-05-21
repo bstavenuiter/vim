@@ -88,13 +88,15 @@ call plug#begin()
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
     Plug 'drewtempelmeyer/palenight.vim'
     Plug 'sainnhe/edge'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-
+    " Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline-themes'
+    Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+    Plug 'kyazdani42/nvim-web-devicons'
     " Experimental, neovim 0.5
     " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-    "
-
+    
+    "Debug baby
+    " Plug 'puremourning/vimspector'
 
 call plug#end()
 

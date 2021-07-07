@@ -198,3 +198,6 @@ endfunction
 
 nnoremap <leader>rt :call RunPHPUnitTest(0)<cr>
 nnoremap <leader>rtf :call RunPHPUnitTest(1)<cr>
+
+"Show file in netrw listing
+map <Leader>ff :let @/=expand("%:t") <Bar> execute 'Vexplore' expand("%:h") <Bar> normal n<CR>

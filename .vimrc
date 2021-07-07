@@ -46,7 +46,7 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 let g:polyglot_disabled = ['markdown']
 
 "---------- PLUGINS ----------
-call plug#begin()
+silent! if plug#begin('~/.vim/plugged')
     Plug 'mileszs/ack.vim'
     Plug 'jiangmiao/auto-pairs'
     Plug 'mattn/emmet-vim'
@@ -75,10 +75,9 @@ call plug#begin()
     Plug 'vifm/vifm.vim' " file manager vifm
 
     " LSP
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'mattn/vim-lsp-settings'
-    Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/asyncomplete-lsp.vim'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'kabouzeid/nvim-lspinstall'
+    Plug 'hrsh7th/nvim-compe'
     Plug 'stephpy/vim-php-cs-fixer'
     Plug 'sheerun/vim-polyglot'
 
@@ -94,18 +93,15 @@ call plug#begin()
     " Plug 'vim-airline/vim-airline-themes'
     Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
     Plug 'kyazdani42/nvim-web-devicons'
-    " Experimental, neovim 0.5
-    " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
     
     "Debug baby
-    " Plug 'puremourning/vimspector'
+    Plug 'puremourning/vimspector'
+
+    "Project drawer
+    Plug 'tpope/vim-vinegar'
 
 call plug#end()
-
-" By default use ripgrep
-if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
 syntax on                                           " hurray for syntax highlighting

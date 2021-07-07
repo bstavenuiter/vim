@@ -36,6 +36,7 @@ set listchars=eol:↲,tab:↦\ ,nbsp:␣,extends:…,trail:⋅    " set better c
 set termguicolors                                   " for better colors and italics
 set undodir=~/.vim/undodir                          " never loose anything your write
 set undofile
+set iskeyword+=-                                    " diw now work on words-like-this"
 
 " italics
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"

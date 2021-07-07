@@ -174,3 +174,13 @@ au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml nofoldenable
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 let g:python3_host_prog = '/usr/local/bin/python3'
+
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+
+"netrw
+let g:netrw_browse_split = 2 " 1 horizontal, 2 vertical, 3 tab, 4 previous window
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_altv = 1
+let g:netrw_winsize = 25

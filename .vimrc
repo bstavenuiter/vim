@@ -33,7 +33,7 @@ set noerrorbells                                    " don't beep audial
 set splitright                                      " want vertical splits to the right
 set splitbelow                                      " want horizontal splits to the below
 set listchars=eol:↲,tab:↦\ ,nbsp:␣,extends:…,trail:⋅    " set better chars when list is set
-set termguicolors                                   "for better colors and italics
+set termguicolors                                   " for better colors and italics
 set undodir=~/.vim/undodir                          " never loose anything your write
 set undofile
 

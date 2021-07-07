@@ -115,10 +115,6 @@ silent! if plug#begin('~/.vim/plugged')
 call plug#end()
 endif
 
-syntax on                                           " hurray for syntax highlighting
-
-set rtp+=/usr/local/opt/fzf
-
 "for italics
 let g:palenight_terminal_italics=1
 let g:airline_theme = "palenight"

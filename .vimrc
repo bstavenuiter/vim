@@ -124,8 +124,12 @@ let g:palenight_terminal_italics=1
 let g:airline_theme = "palenight"
 
 "colorscheme onehalflight
-colorscheme edge
 set background=dark
+
+" don't load colorscheme when not present i.e. in case of <C-x C-e> in bash
+if has#colorscheme('edge')
+    colorscheme edge
+endif
 
 filetype plugin on
 

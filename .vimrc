@@ -37,6 +37,7 @@ set termguicolors                                   " for better colors and ital
 set undodir=~/.vim/undodir                          " never loose anything your write
 set undofile
 set iskeyword+=-                                    " diw now work on words-like-this"
+set updatetime=100
 
 " italics
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"

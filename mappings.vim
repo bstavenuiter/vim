@@ -116,7 +116,6 @@ nmap <Leader>cp :Codi<CR>
 
 "Signify
 " Faster sign updates on CursorHold/CursorHoldI
-set updatetime=100
 
 nnoremap <leader>sd :SignifyHunkDiff<cr>
 nnoremap <leader>su :SignifyHunkUndo<cr>

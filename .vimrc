@@ -43,7 +43,18 @@ set updatetime=100
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 
-let g:polyglot_disabled = ['markdown']
+let g:polyglot_disabled = []
+
+
+" By default use ripgrep
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
+
+syntax on                                           " hurray for syntax highlighting
+
+set rtp+=/usr/local/opt/fzf
 
 "---------- PLUGINS ----------
 silent! if plug#begin('~/.vim/plugged')

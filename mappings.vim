@@ -50,7 +50,8 @@ nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
 " map II to quickly do emmet autocomplete
-inoremap ii <c-y>,
+"inoremap jj <c-y>,
+"inoremap ii <plug>(emmet-expand-abbr)
 
 "fzf
 nnoremap <Leader>t :Files<CR>

@@ -1,7 +1,7 @@
 "---------- MAPPINGS ----------
 imap <c-x><c-c> <plug>vimple_completers_trigger
 " let jj be like ESC
-imap jj <esc>
+"imap jj <esc>
 
 " inserts new checkbox
 "inoremap <Leader>[ [ ] - 

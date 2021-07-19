@@ -71,7 +71,8 @@ nmap <Leader>, <C-^>
 
 " yank entire file
 nmap <Leader>y :%y+<cr>
-vmap <Leader>y :%y+<cr>
+" yank selection to clipboard
+vmap <Leader>y "*y<cr>
 
 " copy current file path to copybuffer
 " relative path

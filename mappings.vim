@@ -202,3 +202,7 @@ nnoremap <leader>rtf :call RunPHPUnitTest(1)<cr>
 
 "Show file in netrw listing
 map <Leader>ff :let @/=expand("%:t") <Bar> execute 'Vexplore' expand("%:h") <Bar> normal n<CR>
+
+"Move line visually
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv

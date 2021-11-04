@@ -206,6 +206,10 @@ map <Leader>ff :let @/=expand("%:t") <Bar> execute 'Vexplore' expand("%:h") <Bar
 "Move line visually
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+nmap <Leader>cn :cnext<CR>
+nmap <Leader>cp :cprev<CR>
+
 nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>

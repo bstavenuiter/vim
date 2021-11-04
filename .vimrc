@@ -69,7 +69,6 @@ silent! if plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'shumphrey/fugitive-gitlab.vim'
     Plug 'tpope/vim-surround'
-    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'metakirby5/codi.vim' "pecl inside buffer
     Plug 'tpope/vim-commentary' " comment shit out ;)
     Plug 'romainl/vim-cool' "disable search highligth when done

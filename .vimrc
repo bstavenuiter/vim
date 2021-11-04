@@ -160,7 +160,7 @@ so ~/.vim/mappings.vim
 " Source the vimrc file after saving it
 augroup autosourcing
     autocmd!
-    autocmd BufWritePost .vimrc,mappings.vim source %
+    autocmd BufWritePost .vimrc,mappings.vim,init.vim source %
 augroup END
 
 " Can use <leader><Enter> to open quickfix window results into split

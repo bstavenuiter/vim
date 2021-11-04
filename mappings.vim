@@ -114,7 +114,7 @@ vnoremap X "_d
 vnoremap <Leader>p "_dP
 
 "Codi
-nmap <Leader>cp :Codi<CR>
+nmap <Leader>ci :Codi<CR>
 
 "Signify
 " Faster sign updates on CursorHold/CursorHoldI

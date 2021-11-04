@@ -71,8 +71,6 @@ silent! if plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-surround'
     " Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'metakirby5/codi.vim' "pecl inside buffer
-    "Plug 'lambdalisue/fern.vim' "file manager
-    Plug 'preservim/nerdcommenter'
     Plug 'tpope/vim-commentary' " comment shit out ;)
     Plug 'romainl/vim-cool' "disable search highligth when done
     Plug 'tpope/vim-abolish' "spelling fixer

@@ -88,6 +88,28 @@ silent! if plug#begin('~/.vim/plugged')
     Plug 'neovim/nvim-lspconfig'
     Plug 'kabouzeid/nvim-lspinstall'
     Plug 'hrsh7th/nvim-compe'
+    if has('nvim')
+        " Linting/formatting
+        Plug 'neomake/neomake'
+        Plug 'sbdchd/neoformat'
+
+        Plug 'neovim/nvim-lspconfig'
+        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+        Plug 'nvim-treesitter/playground'
+
+        " Telescope
+        Plug 'nvim-lua/popup.nvim'
+        Plug 'nvim-lua/plenary.nvim'
+        Plug 'nvim-telescope/telescope.nvim'
+
+        " Plug 'ojroques/nvim-hardline'
+        Plug 'hoob3rt/lualine.nvim'
+        Plug 'lewis6991/gitsigns.nvim'
+        Plug 'kabouzeid/nvim-lspinstall'
+        Plug 'hrsh7th/nvim-compe'
+        " Good tree
+        Plug 'kyazdani42/nvim-tree.lua'
+    endif
     Plug 'stephpy/vim-php-cs-fixer'
     Plug 'sheerun/vim-polyglot'
 

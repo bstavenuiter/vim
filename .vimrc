@@ -120,9 +120,6 @@ silent! if plug#begin('~/.vim/plugged')
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
     Plug 'drewtempelmeyer/palenight.vim'
     Plug 'sainnhe/edge'
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
-    Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
     

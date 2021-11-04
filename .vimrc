@@ -73,6 +73,7 @@ silent! if plug#begin('~/.vim/plugged')
     Plug 'metakirby5/codi.vim' "pecl inside buffer
     "Plug 'lambdalisue/fern.vim' "file manager
     Plug 'preservim/nerdcommenter'
+    Plug 'tpope/vim-commentary' " comment shit out ;)
     Plug 'romainl/vim-cool' "disable search highligth when done
     Plug 'tpope/vim-abolish' "spelling fixer
     Plug 'mhinz/vim-signify' "Git integration in sign column

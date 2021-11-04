@@ -82,7 +82,7 @@ silent! if plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-repeat' "repeating plugin mappings
 
     " File managing
-    Plug 'vifm/vifm.vim' " file manager vifm
+    " Plug 'vifm/vifm.vim' " file manager vifm
 
     " LSP
     Plug 'neovim/nvim-lspconfig'
